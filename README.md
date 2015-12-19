@@ -7,8 +7,8 @@ results for a pair of 1998 SIAM journal papers [1,2].  The postscript files
 `SISC26955.ps` and `SISC26956.ps` are pre-prints of those papers.
 
 The visualization tools in the `gtools` subdirectory of the code archives
-(written in C) have suffered bit rot, and no longer compiler on contemporary
-platforms.  Use the updated versions from `gwmfe1ds-gtools.tgz` and
+(written in C) have suffered bit rot, and no longer compile on contemporary
+platforms.  Use the updated versions from the `gwmfe1ds-gtools.tgz` and
 `gwmfe2ds-gtools.tgz` archive files.
 
 [1] N. N. Carlson and K. Miller, "Design and Application of a Gradient-Weighted
