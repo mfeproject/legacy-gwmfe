@@ -1,0 +1,42 @@
+Burgers equation
+Skew shock problem -- tau1=-.6, tau2=.6
+$
+'mtype'  11
+'ncol'   17
+'nrow'   17
+'npc'    17
+'pcx'    .000E+00 .961E-02 .381E-01 .843E-01 .146E+00 .222E+00 .309E+00
+	 .402E+00 .500E+00 .598E+00 .691E+00 .778E+00 .854E+00 .916E+00
+	 .962E+00 .990E+00 .100E+01
+'nsc'    17*0
+'npr'    4
+'pry'    0.0 0.02 0.98 1.0
+'nsr'    4 5 4
+'tau1'   -.6
+'tau2'   .6
+'ramp0'  2
+'ramp1'  3
+$
+'wpde'   2*1.
+'eltvsc' 2*9.e-6
+'tensn'  2*1.e-5
+'press'  2*1.e-10
+'rad0'   0.
+'fdinc'  1.e-7
+'dxymin' 1.e-12
+'imsg'   3
+'ofreq'  0
+'mstep'  300
+'nout'   8
+'tout'   .1, .2, .3, .4, .5, .6, .7, .8
+'rtol'  .1
+'ptol'   4*1.e-3
+'hstart' 1.e-3
+'hlb'    1.e-8
+'margin' 2.
+'ntol'   .1
+'mitr'   5
+'vtol'   .1
+'mvec'   3
+$
+'visc'   2.e-3

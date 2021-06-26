@@ -1,0 +1,58 @@
+.TH GPLOT2 1 "Nov. 7, 1986"
+.SH NAME
+gplot2 \- produce 2-d plotfiles for hard-copy plotting
+.SH SYNOPSIS
+.B gplot2
+file < \fIplotinfo\fP
+.SH DESCRIPTION
+.I Gplot2
+takes one mfe2d data file as a command-line
+argument and reads plotting instructions from
+.I stdin
+to produce a
+.I plotfile
+ready to send to the 22" versatec plotter
+or to a PostScript device such as the LaserWriter.
+Normally,
+.I gplot2
+is called automatically by
+.I gp2
+whenever
+.I plot
+commands are issued,
+and the intermediate ascii file of
+.I plotinfo
+is never seen by the user.
+There is a compiler switch which
+directs
+.I gp2
+to save the intermediate file
+instead of directly creating
+a plotfile.
+If this were done,
+then the user might have occasion
+to use
+.I gplot2
+directly from the shell.
+.SH FILES
+gp2.src/switches.h \ \ contains several compiler switches and discussion.
+.br
+plotXXXXXX.pf \ \ output plotfiles created by \fIgplot2\fP.
+.br
+pl?XXXXXX.apf \ \ intermediate ascii \fIplotinfo\fP files created
+by \fIgp2\fP.
+.SH AUTHOR
+Lee Busby, U.C. Berkeley Math Dept., November, 1986
+.SH "BUGS AND LIMITATIONS"
+The name of the input file to
+.I gplot2
+must be the same as the file which was used
+as input to
+.I gp2
+in creating the
+.I plotinfo
+file.
+Error-handling is generally poor,
+because
+.I gplot2
+is usually called automatically.

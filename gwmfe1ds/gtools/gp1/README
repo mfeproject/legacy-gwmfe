@@ -1,0 +1,14 @@
+GP1 is a simple interactive visualization tool written specifically
+for 1D MFE by Lee Busby (circa 1986).  The tek emulation mode available
+through X11's xterm is used for on-screen display, and postscript is
+used for hardcopy.  The program was originally developed and used on
+the old Sun 3/50 SunOS workstations; it will likely require some
+changes to build on other platforms, though the changes should be
+reasonably straightforward for an experienced C programmer.
+
+GP1 is Copyright 1986 by Lee Busby
+
+--------------------------------------------------------------------------------
+
+NNC, 22 Dec 2014.  Made several changes to make the code compilable again.
+It works with GCC 2.8.3 and Intel 14.0.3 on 64-bit Linux (Fedora 20).

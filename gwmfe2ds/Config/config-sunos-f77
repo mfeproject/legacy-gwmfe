@@ -1,0 +1,9 @@
+##
+## Old SunOS bundled f77 compiler
+##
+
+FC = f77
+FFLAGS = -u -fast -dalign
+LIB =
+
+SYSOBJ = second_etime.o

@@ -1,0 +1,9 @@
+##
+## NAG Fortran compiler (versions 4.x, 5.0, 5.1)
+##
+
+FC = f95
+FFLAGS = -O3 -dusty -w -I.
+LIB =
+
+SYSOBJ = second_nag.o

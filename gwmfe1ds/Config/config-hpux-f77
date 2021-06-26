@@ -1,0 +1,10 @@
+##
+## HP (HP-UX 10) f77 compiler
+##
+
+FC = f77
+# Note: the compiler generates bad code with -fast
+FFLAGS = -u +O3 +FPVZOD +U77
+LIB =
+
+SYSOBJ = second_etime.o

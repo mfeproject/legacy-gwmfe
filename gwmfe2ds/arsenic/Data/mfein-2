@@ -1,0 +1,31 @@
+Nonlinear arsenic diffusion problem of Kent Smith.   MU = 2
+16 by (8,8) mesh.
+$
+'nxcel'  16
+'nycel1' 8
+'nycel2' 8
+'width'  .02
+'rowy'   0. .2 .4 .6 .8 .94 .96 .98 1.
+'mu' 2.
+$
+'eltvsc' 25.e-6
+'tensn'  0.
+'press'  0.
+'rad0'   0.
+'fdinc'  1.e-7
+'dxymin' 1.e-12
+'imsg'   0
+'ofreq'  0
+'mstep'  300
+'nout'   6
+'tout'   300. 600. 900. 1800. 2700. 3600.
+'rtol'   .1
+'ptol'   3*1.e-3
+'hstart' 1.e-3
+'hlb'    1.e-6
+'margin' 2.
+'ntol'   .1
+'mitr'   4
+'vtol'   .1
+'mvec'   3
+$

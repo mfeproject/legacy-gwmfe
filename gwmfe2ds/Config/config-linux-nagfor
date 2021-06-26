@@ -1,0 +1,9 @@
+##
+## NAG Fortran compiler
+##
+
+FC = nagfor
+FFLAGS = -O3 -dusty -w -I.
+LIB =
+
+SYSOBJ = second_nag.o

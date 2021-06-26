@@ -1,0 +1,9 @@
+##
+## IBM XLF 4.1 compiler
+##
+
+FC = xlf
+FFLAGS = -u -w -O3 -qhot -qdpc=e
+LIB = -lmass
+
+SYSOBJ = second_mclock.o

@@ -1,0 +1,13 @@
+October 2008
+  o Added several config files for modern compilers under Linux.
+  o Modernized GP1's use of system libraries; it compiles once again.
+  o Changed the licensing terms to the MIT license.
+
+Initial public release (March 1998) --
+  Version 4.2 (1991) with minor changes:
+  o Removed unnecessary system fluff (calls to clock, date, etc.) to improve
+    portability.
+  o Moved parameter declarations for array dimensioning to a single file that
+    is included using the INCLUDE directive.
+  o Improved treatment of Dirichlet boundary conditions.  This should fix the
+    fatal anomalies that would occasionally occur.

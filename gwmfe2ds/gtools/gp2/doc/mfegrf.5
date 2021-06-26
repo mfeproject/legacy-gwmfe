@@ -1,0 +1,203 @@
+.TH MFEGRF 5 "August, 1986"
+.SH NAME
+mfegrf \- graphics data files output by GWMFE1DS or GWMFE2DS
+.SH SYNOPSIS
+.B mfegrf
+.SH DESCRIPTION
+.I Mfegrf
+is the name of the file which contains graphical data, produced
+by running the 1d or 2d versions of Neil Carlson's Moving Finite
+Element solver.
+.I Gp1
+(1) is used to look at 1d output;
+.I Gp2
+(1) is used for 2d output.
+This manual entry contains descriptions of the structure of the
+file
+.I mfegrf
+in each case. It also describes the structure of the binary file produced
+by
+.I gpp
+(1), the 2d graphics pre-processor.
+.PP
+.B "Mfegrf for the 1d case"
+.ne 8
+.PP
+.I Gp1
+was designed to accept a broad range of input file formats.
+The
+.I mfegrf
+file is a sequence of ascii lines,
+logically broken up into
+.I frames.
+Each
+.I frame
+contains a
+.I "header part"
+and a
+.I "data part".
+The
+.I "header part"
+is one or more non-numeric lines.
+(line containing some character other
+than '0' through '9', 'e', 'E', '+' , '-', or '.').
+The last line of the header part will be saved by
+.I gp1
+as a frame title.
+.br
+The
+.I "data part"
+is normally a series of lines of free-formatted
+numbers.
+Each line contains the same number of columns,
+although successive
+.I frames
+can vary in the number of columns.
+The first column is interpreted
+as a set of 'x' or abscissa values;
+the second and successive columns
+are interpreted as 'y' or ordinate values
+corresponding to the first column.
+In short, the
+.I "data part"
+is just a tabulation of one or more functions
+written as a human being would normally expect
+to read it.
+.PP
+.B "Mfegrf for the 2d case"
+.ne 8
+.PP
+The 2d file format is much more restrictive than the 1d format.
+In outline form, the (ascii)
+.I mfegrf
+file looks like the following:
+.DS
+I)   \fBHeader Part\fP
+	A) String List
+	B) numofzvals
+	C) Z-Descriptions
+	D) numofnodes
+	E) numofedges
+	F) numofcells
+II)  \fBEdge List\fP
+III) \fBCell List\fP
+IV)  \fBFrame List\fP
+	A) frame_time
+	B) Strings
+	C) X,y,z data
+.DE
+.PP
+Item I)A, the
+.I "String List",
+is a set of 4 descriptive strings delimited by a newline character
+which are displayed in the text output of
+.I gp2.
+Strings in
+.I gp2
+are generally limited to 20 characters
+due to the space limitations of the display.
+Item II), the
+.I "edge list",
+is an enumerated list of the node numbers
+at the tail and head of each successive edge.
+The
+.I "cell list"
+is a similar listing of node numbers at each vertex
+of each successive cell.
+Each frame in the
+.I "frame list",
+representing the solution at a particular time instant,
+is structured the same.
+The problem time for the frame is given first; then
+follows 4 strings descriptive of this particular frame.
+The x,y,z data then follows, node by node.
+.PP
+.B "Binary format for mfegrf in 2d case"
+.ne 8
+.PP
+The following outline gives the structure of the mfe2d binary file,
+produced as the output of the graphics pre-processor,
+.I gpp.
+The 'C' data type of certain objects is given in parentheses following
+the object.
+.DS
+I)   \fBHeader Part\fP
+	A) Header
+		1) Magic number (int)
+		2) Problem constants
+			a) numofnodes (int)
+			b) numofedges (int)
+			c) numofcells (int)
+			d) numofzvals (int)
+			e) numoframes (int)
+		3) Index table offsets
+			a) frame_table_offset (long int)
+			b) range_table_offset (long int)
+	B) String list
+	C) Edge list (unsigned short int)
+	D) Cell list (unsigned short int)
+II)  \fBFrame List\fP
+	A) Frame time (float)
+	B) More strings
+	C) X,y,z data (float)
+III) \fBIndex Tables\fP
+	A) Frame index (long int)
+	B) Range table
+		1) Problem domain (float)
+		2) Range of each frame (float)
+.DE
+.PP
+Item I)A)1, the
+.I magicnum,
+( = 0250) identifies the file as a binary mfe2d file.
+Item I)A)3 gives the offsets within the file of the
+.I frame_table,
+a listing of the file offset of the beginning of each
+.I frame,
+and the
+.I range_table,
+a summary of the extreme values of certain parameters.
+Item I)B is the same string list as item I)A of the ascii
+file; the
+.I "edge list"
+and
+.I "cell list"
+are also similar to their ascii file counterparts.
+Note that these lists are written using
+.I "unsigned short int".
+(16 bits on the VAX-750).
+The data for each frame is generally the binary counterpart
+of the ascii file; however, the x,y,z data is written in a
+different order.
+In the binary file,
+all the x and y values are written first,
+then all the values for the first z-component,
+then all the values for the second z-component,
+and so on.
+.PP
+Finally, the
+.I range_table
+gives minimum and maximum values for x and y
+over the whole set of frames,
+followed by min/max values for each z-component
+over each successive frame.
+.SH COMMENTS
+In retrospect, the choice of a binary file
+for keeping 2d data may have been a mistake.
+It requires at least two separate programs,
+.I gpp(1)
+and
+.I cats(1)
+to read and maintain data files which
+were painful to write and debug,
+and which would otherwise not have been necessary.
+A possible future approach would be to separate
+the topological (edge list and cell list) data
+and the x,y,z data into two files.
+Future programs for the automatic construction
+of initial grids and
+edge and cell lists would benefit
+from a simple specification for topological
+data files.
+.SH "SEE ALSO"
+gpp(1),gp1(1),gp2(1),cats(1)

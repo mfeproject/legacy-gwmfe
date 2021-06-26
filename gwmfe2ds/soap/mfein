@@ -1,0 +1,33 @@
+Motion by mean curvature with constant internal pressure.
+Gouda cheese problem. 25x25 grid.
+$
+'mtype'  11
+'npc'    2
+'pcx'    0. 1.
+'nsc'      23
+'npr'    2
+'pry'    0. 1.
+'nsr'      23
+$
+'eltvsc' 25.e-6
+'tensn'  1.e-3
+'press'  1.e-7
+'rad0'   1.e-3
+'fdinc'  1.e-7
+'dxymin' 0.
+'imsg'   0
+'ofreq'  20
+'mstep'  400
+'nout'   2
+'tout'   4. 5.
+'rtol'  .1
+'ptol'   3*1.e-3
+'hstart' 1.e-6
+'hlb'    1.e-8
+'margin' 2.
+'ntol'   .1
+'mitr'   4
+'vtol'   .1
+'mvec'   3
+$
+'h'   2.

@@ -1,0 +1,60 @@
+.TH GPLOT1 1 "Nov. 7, 1986"
+.SH NAME
+gplot1 \- produce 1-d plotfiles for hard-copy plotting
+.SH SYNOPSIS
+.B gplot1
+file [ file ... ] < \fIplotinfo\fP
+.SH DESCRIPTION
+.I Gplot1
+takes one or more mfe1d data files as command-line
+arguments and reads plotting instructions from
+.I stdin
+to produce a
+.I plotfile
+ready to send to the 22" versatec plotter
+or to a PostScript device (LaserWriter or the like).
+Normally,
+.I gplot1
+is called automatically by
+.I gp1
+whenever
+.I plot
+commands are issued,
+and the intermediate ascii file of
+.I plotinfo
+is never seen by the user.
+There is a compiler switch which
+directs
+.I gp1
+to save the intermediate file
+instead of directly creating
+a plotfile.
+If this were done,
+then the user might have occasion
+to use
+.I gplot1
+directly from the shell.
+.SH FILES
+gp1.src/switches.h \ \ contains several compiler switches and discussion.
+.br
+/tmp/gpXXXXXX \ \ temporary datafile for input data.
+.br
+plotXXXXXX.pf \ \ output plotfiles created by \fIgplot1\fP.
+.br
+pl?XXXXXX.apf \ \ intermediate ascii \fIplotinfo\fP files created
+by \fIgp1\fP.
+.SH AUTHOR
+Lee Busby, U.C. Berkeley Math Dept., November, 1986
+.SH "BUGS AND LIMITATIONS"
+The names and order of the input files to
+.I gplot1
+must be the same as the files which were used
+as input to
+.I gp1
+in creating the
+.I plotinfo
+file.
+Error-handling is generally poor,
+because
+.I gplot1
+is usually called automatically.

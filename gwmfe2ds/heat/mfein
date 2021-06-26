@@ -1,0 +1,33 @@
+Heat equation -- testing grid collapse; srcq = 1
+$
+'mtype'  31
+'npc'    2
+'pcx'    0. 1.
+'nsc'      7
+'npr'    2
+'pry'    0. 1.
+'nsr'      7
+'u00,...'  0. 0. .1 .1
+$
+'eltvsc' 4.e-6
+'tensn'  0.
+'press'  0.e-9
+'rad0'   0.
+'fdinc'  1.e-7
+'dxymin' 1.e-12
+'imsg'   0
+'ofreq'  20
+'mstep'  100
+'nout'   1
+'tout'   100.
+'rtol'  .1
+'ptol'   3*1.e-3
+'hstart' 1.e-3
+'hlb'    1.e-4
+'margin' 2.
+'ntol'   .1
+'mitr'   4
+'vtol'   .1
+'mvec'   3
+$
+'srcq'   1.

@@ -1,0 +1,71 @@
+*******************************************************************************
+*  MFE2 1.1 (10/29/91)  --  06/25/92  18:03:48  --  CRAY/XMP                  *
+*  Five spot problem; 29x33 grid                                              *
+*******************************************************************************
+
+
+I N T E R N A L   C O D E   P A R A M E T E R S
+
+  Number of PDEs (NPDE)                  =      2
+  Max number of nodes (MNOD)             =   1089
+  Max number of triangles (MTRI)         =   2048
+  Max number of edges (MEDG)             =   3136
+  LE solver storage allocation (SMAX)    =1210000
+  Max number of boundary nodes (MBND)    =    128
+
+
+M F E   P A R A M E T E R S
+
+  Equation weights (WPDE)                =  1.000       1.000    
+  Element viscosities (ELTVSC)           = 0.2500E-04  0.2500E-06
+  Element tensions (TENSN)               = 0.1000E-03  0.0000E+00
+  Element pressures (PRESS)              = 0.1000E-09  0.1000E-09
+  Element pressure radius (RAD0)         = 0.0000E+00
+  Jacobian increment (FDINC)             = 0.1000E-06
+  Minimum element area (DXYMIN)          = 0.1000E-11
+
+  BDF2 message flag (IMSG)               =     0
+  Output frequency (OFREQ)               =     0
+  Maximum number of steps (MSTEP)        =   200
+  Solution output times (TOUT)           = 0.5000       1.000       4.000    
+                                            4.800       5.000    
+
+  Relative tolerance on areas (RTOL)     = 0.1000    
+  Predictor error tolerance (PTOL)       = 0.1000E-02  0.1000E-04  0.1000E-02
+                                           0.1000E-02
+
+  Initial time step (H)                  = 0.1000E-05
+  Time step lower bound (HLB)            = 0.1000E-07
+  Jacobian time step margin (MARGIN)     =  2.000    
+  Newton iteration tolerance (NTOL)      = 0.1000    
+  Maximum number of iterations (MITR)    =     4
+  Vector tolerance in GMRES (VTOL)       = 0.1000    
+  Max no of vectors in GMRES (MVEC)      =     3
+
+
+U S E R   D E F I N E D   V A R I A B L E S
+
+  (muratio ) = 0.1000    
+  (visc    ) = 0.5000E-03
+  (eps     ) = 0.1000E-01
+
+
+** MAIN: Beginning integration at t = 0.0000E+00
+
+   36:! T = 0.5000E+00,  H = 0.662E-01,  CPU =   31.40(SEC)
+        NRE:NJE= 089:011,  NPF:NJF:NNR:NNF:NPEF= 000:000:002:000:000
+
+   42:! T = 0.1000E+01,  H = 0.137E+00,  CPU =   35.34(SEC)
+        NRE:NJE= 113:012,  NPF:NJF:NNR:NNF:NPEF= 000:000:003:000:000
+
+   82:! T = 0.4000E+01,  H = 0.539E-01,  CPU =   67.04(SEC)
+        NRE:NJE= 263:022,  NPF:NJF:NNR:NNF:NPEF= 000:000:013:000:000
+
+   95:! T = 0.4800E+01,  H = 0.443E-01,  CPU =   79.33(SEC)
+        NRE:NJE= 319:026,  NPF:NJF:NNR:NNF:NPEF= 000:000:017:000:000
+
+  101:! T = 0.5000E+01,  H = 0.229E-01,  CPU =   85.24(SEC)
+        NRE:NJE= 343:028,  NPF:NJF:NNR:NNF:NPEF= 000:000:019:000:000
+
+** MAIN: Completed integration to final TOUT.
+** Halting execution.

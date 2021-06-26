@@ -1,0 +1,83 @@
+*******************************************************************************
+*  Drift-diffusion equations for semiconductor device modelling               *
+*  Input for Figure 7.2: Time-dependent diffusion coefficient                 *
+*******************************************************************************
+
+
+ I N I T I A L   C O N D I T I O N S
+
+  Number of elements (NELT)              =    30
+  Number of grid segments (NSEG)         =     5
+  Number of cells per segment (NISEG)    =   4   6  10   6   4
+  Initial conditions (YSEG):
+
+             x           u(k)
+            ---         ------
+            .0000       .0000       .0000    
+            .6000       .0000      0.7500E-01
+            .7000       .0000      0.8750E-01
+            .8000      -1.000       .1000    
+            .9000      -1.000       .1125    
+            1.000      -1.000       .1250    
+ 
+  Left boundary conditions (BCL)         = 1 1 1
+  Right boundary conditions (BCR)        = 1 1 1
+
+
+ M F E   P A R A M E T E R S
+
+  Equation weights (WPDE)                =  1.000      0.1000E-01
+  Kind of segment viscosities (KREG)     =     2
+  Segment viscosities (SEGVSC)           = 0.4000E-05  0.4000E-03
+  Segment springs (SEGSPR)               =  .0000       .0000    
+  Lower bound on cell width (DXMIN)      =  .0000    
+  Finite difference increment (FDINC)    = 0.1000E-07
+
+  BDF2 message flag (IMSG)               =     0
+  Output frequency (OFREQ)               =     0
+  Maximum number of steps (MSTEP)        =   600
+  Solution output times (TOUT)           =  40.00       140.0       240.0    
+                                            340.0       440.0       540.0    
+
+  Relative tolerance on dx (RTOL)        =  .1000    
+  Predictor error tolerance (PTOL)       = 0.1000E-02  0.1000E-02  0.1000E-02
+
+  Initial time step (H)                  = 0.1000E-05
+  Time step lower bound (HLB)            = 0.1000E-09
+  Jacobian time step margin (MARGIN)     =  2.000    
+  Newton iteration tolerance (NTOL)      =  .1000    
+  Max number of iterations (MITR)        =     4
+  Vector tolerance in GMRES (VTOL)       =  .1000    
+  Max no. of vectors in GMRES (MVEC)     =     3
+
+
+ U S E R   D E F I N E D   V A R I A B L E S
+
+  (lambda  ) = 0.1000E-02
+  (eps     ) =  .1000    
+  (uscf    ) =  18.42    
+  (vscf    ) =  1.000    
+
+
+** MAIN: Beginning integration at t = 0.0000E+00
+
+  131:  T = 0.4000E+02,  H = 0.551E+00,  CPU =     .38(SEC)
+        NRE:NJE= 383:023,  NPF:NJF:NNR:NNF:NPEF= 000:000:012:001:000
+
+  295:  T = 0.1400E+03,  H = 0.157E+01,  CPU =     .90(SEC)
+        NRE:NJE= 959:048,  NPF:NJF:NNR:NNF:NPEF= 000:000:031:004:001
+
+  396:  T = 0.2400E+03,  H = 0.205E+01,  CPU =    1.22(SEC)
+        NRE:NJE=1312:063,  NPF:NJF:NNR:NNF:NPEF= 000:000:045:004:002
+
+  438:  T = 0.3400E+03,  H = 0.473E+01,  CPU =    1.39(SEC)
+        NRE:NJE=1482:073,  NPF:NJF:NNR:NNF:NPEF= 000:000:053:005:002
+
+  477:  T = 0.4400E+03,  H = 0.836E+01,  CPU =    1.52(SEC)
+        NRE:NJE=1631:080,  NPF:NJF:NNR:NNF:NPEF= 000:000:058:008:002
+
+  488:  T = 0.5400E+03,  H = 0.141E+02,  CPU =    1.56(SEC)
+        NRE:NJE=1676:081,  NPF:NJF:NNR:NNF:NPEF= 000:000:059:008:002
+
+** MAIN: Completed integration to final TOUT.
+** Halting execution.

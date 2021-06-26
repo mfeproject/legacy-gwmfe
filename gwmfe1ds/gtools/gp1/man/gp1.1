@@ -1,0 +1,200 @@
+.TH GP1 1 "October, 1986"
+.SH NAME
+gp1 \- interactive graphics program for mfe1d data
+.SH SYNOPSIS
+.B gp1
+file [ file ... ]
+.SH DESCRIPTION
+.I Gp1
+is a general purpose interactive graphics program used to display
+tabulated function data. See
+.I mfedat(5)
+for a description of the format of its input files.
+.PP
+.I Gp1
+is used interactively on terminals compatible with the Tektronix 4010
+or 4014.
+It produces hard-copy output on a 22" Versatec electrostatic plotter.
+.PP
+When
+.I gp1
+is started, it presents a short summary of its input file(s) on the
+screen and displays the prompt
+.I 0>.
+The user may then enter further commands to the keyboard. If the command
+.I draw
+is entered at this point,
+.I gp1
+plots the first component of the first frame and stops
+for further commands.
+.PP
+An input file is conceptually a series of
+.I frames.
+Each
+.I frame
+is a matrix, rows and columns of numbers,
+the first column of which is assumed to be
+x or abscissa values, while the second and
+subsequent columns tabulate y or ordinate values.
+The number of rows and columns in each frame is
+independent of the other frames in the file.
+.PP
+.B "Keyboard Commands"
+.ne 8
+.PP
+In the following discussion, optional arguments are shown enclosed in
+square brackets, [ \fIarg\fP ]; characters which must appear literally are
+shown in single quotes, '\fIx\fP'.
+Commands are normally terminated with a 
+newline, or several commands may be strung together separated with
+semi-colons. Any command may be abbreviated by using an unambiguous
+prefix of the command word(s). If a numeric argument is required, the
+notation \fII_num\fP indicates that an integer argument is expected;
+the notation \fIF_num\fP indicates a floating point argument.
+.PP
+.IP "[ \fBframe\fP ] \fIframe_list\fP"
+.ns
+.IP "\fBcomp\fP \fIcomp_list\fP"
+Designate the frames mentioned in the
+.I framelist
+as the frames to be used in further drawing operations.
+A
+.I framelist
+is an enumerated list of frame numbers,
+or an interval of frame numbers,
+or a combination.
+Similarly, the
+.I comp
+command designates a set of components to become active;
+the
+.I comp_list
+is similar in form to the
+.I frame_list.
+.IP "\fB\'+\'\fP or \fB\\'-\'\fP"
+.br
+Increment or decrement the frame number(s) by one, respectively.
+.IP "\fBdraw\fP"
+.br
+Draw the screen over, incorporating all the commands entered
+since the screen was last drawn. Note that the screen is only
+re-drawn when this command is executed.
+.IP "\fBsummary\fP"
+Sends a tabulation of frame titles to the
+screen. This command is automatically executed upon initialization
+of \fIgp1\fP.
+.IP "\fBplot\fP"
+.br
+Send the current picture specification to the current plotfile.
+.IP "\fBformat\fP \fII_num\fP"
+Change to the given format number.
+(This applies to the hard-copy plots,
+not the interactive video screen.)
+.I Gp1 
+recognizes five formats:
+format 1 by default is an 8.5 by 11 inch page, format 2
+is 11 by 15 inches, and format 3 is 22 by 26 inches.
+In June, 1988 format 4 and 5 were added.
+Format 4 is a portrait mode 8.5 by 11 inch laserwriter page,
+and format 5 is landscape mode.
+Format 4 is the new default.
+.IP "\fBsize\fP \fIF_num\fP"
+Change the default size of the current format. To be more exact, this
+command sets the size, in inches, of the square viewport
+(hard-copy only)
+in which plotting takes place. The default
+.I size
+for format 1 is 7 inches, for format 2, 10 inches, and format 3 is
+21 inches square.
+Format 4 defaults to 7 inches,
+and 5 to 7.5 inches.
+.IP \fBI_num>\fP
+All the parameters of the current picture specifier are stored in a
+structure called (for lack of a more descriptive term) a "screen".
+There are four screens available to the user, numbered "0" through
+"3". The current screen is displayed as part of the prompt. This
+feature allows a complicated view to be stored temporarily and
+returned to later by simply changing screens.
+.IP "\fBfile\fP \fInew_file_name(s)\fP"
+Re-initialize
+.I gp1
+using the
+.I new_file(s)
+for input. Starts a new plotfile for plotted data.
+.IP "\fBcomp\fP \fII_num\fP [ : ]  \fInodetype\fP"
+The node symbols for the designated component number
+are set to the designated
+.I nodetype,
+which can be
+.I diamond,
+.I square,
+or
+.I triangle.
+The default symbol is
+.I diamond.
+.IP "\fBcomp\fP \fII_num\fP [ : ] \fBshift\fP  \fIF_num\fP [ , ] \fIF_num\fP"
+.ns
+.IP "\fBframe\fP \fII_num\fP [ : ] \fBshift\fP  \fIF_num\fP [ , ] \fIF_num\fP"
+The designated component or frame
+is shifted relative to other components or frames
+by the given amounts in
+.I x
+and
+.I y,
+respectively.
+.IP "\fBnodes on\fP"
+.ns
+.IP "\fBnodes off\fP"
+.ns
+.IP "\fBlabels on\fP"
+.ns
+.IP "\fBlabels off\fP"
+.ns
+.IP "\fBxp on\fP"
+.ns
+.IP "\fBxp off\fP"
+.br
+Turn on or off the rendering of node symbols
+or axis labels
+in plotted pictures.
+The command
+.I xp on
+selects
+.I expert
+mode; textual information is not included in
+the plotted picture.
+.IP "\fBx\fP [ : ] [ \fIF_num\fP [ \fBto\fP \fIF_num\fP ]"
+.ns
+.IP "\fBy\fP [ : ] [ \fIF_num\fP [ \fBto\fP \fIF_num\fP ]"
+.ns
+.IP "\fBx\fP [ : ] \fBauto\fP"
+.ns
+.IP "\fBy\fP [ : ] \fBauto\fP"
+.br
+Reset the limits of the x-axis or y-axis, respectively.
+The first argument sets the left or lower bound,
+while the second argument sets the right or upper bound.
+Either or both arguments may be entered.
+Normally, these limits are automatically computed.
+Entering a command of the first two forms turns off the automatic
+computation.
+To restore automatic scaling, use one of the last two forms given.
+(An asterisk
+may be substituted for the word
+.I auto.)
+.SH FILES
+plotXXXXXX.pf \ \ output from "plot" commands if "PIPEPLOT"
+option is selected in gp1.src/switches.h.
+.br
+pl?XXXXXX.apf \ \ output from "plot" commands if "FILEPLOT"
+option is selected in gp1.src/switches.h.
+.SH "SEE ALSO"
+gp2(1), sendplot(1), mfedat(5), gplot1(1).
+.SH AUTHOR
+Lee Busby, U.C. Berkeley Math Dept., October, 1986.
+Revisions May and June, 1988.
+.SH "BUGS AND LIMITATIONS"
+250 frames total in all files, no more than 100 components per frame,
+no more than 1000 rows (x-values) per frame, no more than 20 files open
+at one time, frame titles are limited to 80 characters.
+Should be able to use different node symbols for different frames,
+but can't.

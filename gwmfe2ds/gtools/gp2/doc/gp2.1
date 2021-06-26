@@ -1,0 +1,322 @@
+.TH GP2 1 "October, 1986"
+.SH NAME
+gp2 \- interactive graphics program for mfe2d data
+.SH SYNOPSIS
+.B gp2
+mfefile
+.SH DESCRIPTION
+.I Gp2
+is a special purpose interactive graphics program used to analyze and
+display mfe2d data. It could in principle be used to help visualize or
+display any piecewise-planar surface, so long as the input file conformed
+to a rather specific set of rules. (See \fImfedat\fP(5).)
+.PP
+.I Gp2
+is used interactively on terminals compatible with the Tektronix 4010
+or 4014.
+It produces hard-copy output on a 22" Versatec electrostatic plotter.
+.PP
+Briefly, the user enters keyboard commands to create
+.I
+grid views, contour plots, vector field plots,
+or
+.I
+cross section plots.
+There is a window facility which allows the user to select
+and magnify any small portion of the surface being viewed.
+.PP
+An mfe2d data file consists in essence of a topological description
+of the grid followed by a sequence of
+.I frames,
+numbered starting with "1".
+Each
+.I frame
+is basically just a listing of x,y, and one or more z values at each
+node in the grid, representing the function or surface at a
+particular instant in time.
+The user enters commands at the keyboard to select a particular frame
+and type of view; occasionally (s)he re-draws the screen to show the
+changes made since the screen was last drawn.
+.PP
+When
+.I gp2
+is started, it presents a short summary of its input file on the
+screen and displays the prompt
+.I 0>.
+The user may then enter further commands to the keyboard. If the command
+.I draw
+is entered at this point,
+.I gp2
+displays a
+.I "grid view"
+(orthogonal projection of the grid onto the x-y plane)
+of frame number 1.
+.PP
+.B "Keyboard Commands"
+.ne 8
+.PP
+In the following discussion, optional arguments are shown enclosed in
+square brackets, [ \fIarg\fP ]; characters which must appear literally are
+shown in single quotes, '\fIx\fP'.
+Commands are normally terminated with a 
+newline, or several commands may be strung together separated with
+semi-colons. Any command may be abbreviated by using an unambiguous
+prefix of the command word(s). If a numeric argument is required, the
+notation \fII_num\fP indicates that an integer argument is expected;
+the notation \fIF_num\fP indicates a floating point argument.
+.PP
+.IP \fBI_num\fP
+Change to the given frame number.
+.IP "\fB\'+\'\fP or \fB\\'-\'\fP"
+.br
+Increment or decrement the frame number by one, respectively.
+.IP \fBdraw\fP
+.br
+Redraw the screen, incorporating all the commands entered
+since the screen was last drawn. Note that the screen is only
+re-drawn when this command is explicitly entered.
+.IP "\fBshow grid\fP"
+.ns
+.IP "\fBdot grid\fP"
+.ns
+.IP "\fBno grid\fP"
+.br
+Display the grid edges using solid lines, dotted lines, or invisible
+lines, respectively.
+.IP "\fBshow times\fP"
+Sends a tabulation of frame numbers and problem times to the
+screen. This command is automatically executed upon initialization
+of
+.I gp2.
+.IP "\fBplot\fP [ \fIframeseq\fP ]"
+Send the entered sequence of frames to the current plotfile, or if
+no
+.I frameseq
+was entered, send the current frame. A
+.I frameseq
+is an enumerated list of frames, or an interval, or both.
+For example,
+.sp 1
+.B plot
+2 5 7-10
+.sp 1
+sends frames 2,5,7,8,9,and 10 to the plotfile.
+.IP "\fBformat\fP \fII_num\fP"
+Change to the given format number.
+(This applies to hard-copy plots,
+not to the interactive video screen.)
+.I Gp2 
+recognizes three formats:
+format 1 by default is an 8.5 by 11 inch page, format 2
+is 11 by 15 inches, and format 3 is 22 by 26 inches.
+In June, 1988 format 4 (the new default) and 5 were added.
+Format 4 is a portrait mode laserwriter page
+and format 5 is a landscape page for that device.
+.IP "\fBsize\fP \fIF_num\fP"
+.br
+Change the default size of the current format. To be more exact, this
+command sets the size, in inches, of the square viewport
+on the hard-copy device
+on which plotting takes place. The default
+.I size
+for format 1 is 7 inches, for format 2, 10 inches, and format 3 is
+21 inches square.
+Format 4 defaults to 7 inches,
+format 5 to 7.5 inches.
+.IP \fBI_num>\fP
+.br
+All the parameters of the current picture specifier are stored in a
+structure called (for lack of a more descriptive term) a "screen".
+There are four screens available to the user, numbered "0" through
+"3". The current screen is displayed as part of the prompt. This
+feature allows a complicated view to be stored temporarily and
+returned to later by simply changing screens.
+.IP "\fBfile\fP \fInew_file_name\fP"
+.br
+Re-initialize
+.I gp2
+using the
+.I new_file
+for input. Starts a new plotfile for plotted data.
+.IP "\fBxsect\fP [ \fII_num\fP ] [ \fI'*' I_num\fP ]"
+.ns
+.IP "\fBqxsect\fP [ \fII_num\fP ] [ \fI'*' I_num\fP ]"
+.br
+Turn on cross section plotting in the current window. If a
+.I draw
+command is issued at this point, a
+.I plan view
+showing the location of cross section slices on the x-y plane
+will be drawn. The first optional argument selects a
+.I z-value.
+(Recall that an mfe solution file typically contains x, y,
+and several z-values at each node. Each set of x,y,z triples
+defines a different surface.) The second optional argument
+selects the number of cross section slices. (default 50).
+The alternate form of the command affects the manner in which
+drawing takes place after a subsequent
+.I open
+command.
+Specifically, the
+.I qxsect
+command
+("quick" cross sections)
+displays only the grid edges for preliminary viewing of the projected
+surface.
+.IP "\fBno xsect\fP"
+.br
+Turns off the cross section plotting routine.
+.IP "\fBshear\fP [ \fIF_num\fP  [ ,\fIF_num\fP ] ]"
+.br
+Shears the successive cross sections in a multiple cross
+section view by the given percentage of cross section width
+and original z-range. At least one of the arguments must be
+entered: the first argument specifies lateral shear and the 
+second specifies vertical shear. The default value is initially
+50 percent. A view with positive lateral and vertical shear is 
+"stretched out" left to right and bottom to top as you progress
+from the "near" section to the "far"section.
+.IP "\fBzrange\fP \fIF_num\fP : \fIF_num\fP"
+.br
+Sets the z-range of the displayed cross section
+data to the given lower and upper limits.
+The z-range is set before any non-zero vertical shear
+is applied.
+To reset automatic scaling, enter \fIzrange *\fP.
+.IP \fBxslice\fP
+.ns
+.IP \fByslice\fP
+.br
+Take cross sections parallel to the x-axis or to the y-axis,
+respectively.
+.I Xslice
+is the default;
+.I yslice
+is similar in effect to rotating the current window by 90
+degrees counter-clockwise.
+.IP \fBopen\fP[!]
+.br
+This command has several functions. If a cross section
+.I plan view
+has been initialized, then it will be "opened" to show the
+.I elevation view.
+Otherwise, if a pending window is currently showing, that
+window and its contents are expanded to fill the entire
+viewport.
+If neither a cross section plan view nor pending window is
+currently active, then a pending window is placed at the
+center of the viewport, with height and width equal to 1/2
+of the viewport. Windows may be opened recursively to a
+total depth of ten windows.
+The optional exclamation point opens the window highest in
+the stack opened by the last series of
+.I open
+commands.
+.IP \fBclose\fP[!]
+.br
+Generally reverses the action of
+.I open.
+.IP "\fBmabs\fP [ \fIF_num\fP [ , \fIF_num\fP ] ]"
+.br
+Move the window to the given absolute coordinates.
+If there is a pending window, move that window, otherwise,
+move the current window. Note that this command and the following
+commands which affect window size and placement operate only
+on windows above level 0, the original window on the entire
+problem domain.
+This means that at least one
+.I open
+command must be given before
+.I mabs
+and the others will have an effect.
+.br
+The point being moved is the center of the window.
+You may move the window center to any point inside or on the
+boundary of the viewport. The lower left corner of the viewport
+has virtual coordinates (0,0); the upper right corner is
+(100,100).
+The optional arguments to
+.I mabs
+define the x and y coordinates of the move, respectively.
+If no arguments, then
+the window is moved to the center of the viewport.
+A missing argument is supplied by the last entered value.
+.IP "\fBmrel\fP [ \fIF_num\fP [ ,\fIF_num\fP ] ]"
+.br
+Move the window relative to its current position and orientation. That is,
+the window is shifted parallel to itself laterally and vertically,
+taking account of any tilt away from the normal position.
+Any missing arguments are supplied by the last value entered.
+.IP "\fBangle\fP [ = ] \fIF_num\fP"
+.br
+Tilt the window by the given angular argument, in degrees. Tilt is 
+cumulative if windows are opened inside of windows.
+.IP "\fBheight\fP [ = ] \fIF_num\fP"
+.br
+Set the window height to the given height value. Note that the value can
+be greater than 100, which has the effect of shrinking the domain within
+the viewport. This feature is useful if a vector field which extends away
+from the domain boundary is being drawn.
+.IP "\fBwidth\fP [ = ] \fIF_num\fP"
+.br
+Set the window width.
+.IP "\fBhw\fP [ = ] \fIF_num\fP"
+.br
+Sets height and width together, so that the window remains square.
+.IP "\fBcontour\fP [ \fII_num\fP ]"
+.ns
+.IP "\fBdot contour\fP [ \fII_num\fP ]"
+.ns
+.IP "\fBno cont\fP"
+.br
+Select the given z-index for contouring. The z-index defaults to 1 at first,
+and thereafter defaults to the last selected z-index. Contours are drawn
+with solid or dotted lines, respectively.
+.I "No cont"
+turns off contouring.
+.IP "\fBinterval\fP  [ = ] \fIF_num\fP"
+.br
+Set the contour interval to the given value. Contour intervals are set
+initially so that about 10 contour lines appear between z-minimum and
+z-maximum. Thereafter, the interval is changed only by using this 
+command.
+.IP "\fBoffset\fP [ = ] \fIF_num\fP"
+.br
+Move all the contour planes up or down according to whether argument
+is positive or negative. Default value is zero.
+.IP "\fBvector\fP [ \fII_num\fP , \fII_num\fP ] [ \fI'*' I_num\fP ]"
+.br
+Turn on vector field.
+The first argument selects the vector
+component parallel to the x-axis from among the available z-indices,
+and the second argument selects the component parallel to the y-axis.
+They default to "1" and "2", respectively.
+After the first use of the command, missing values 
+default to the last previous entry. The last argument selects the
+size of the grid on which to draw the vector field. For example,
+if gridsize = 10, the field is drawn on a 10x10 grid.
+.IP "\fBno vector\fP"
+.br
+Turn off the vector field.
+.IP "\fBlength\fP [ = ] \fIF_num\fP"
+.br
+Set the length of the maximum vector on the domain.
+The unit of measure
+is the current gridsize.
+This means that the absolute length of vectors
+changes as gridsize is changed.
+.SH FILES
+plotXXXXXX.pf \ \ output from "plot" commands
+.SH "SEE ALSO"
+gp1(1), sendplot(1), gpp(1), cats(1), mfedat(5), gplot2(1)
+and the program "GWMFE2DS" written by N.N. Carlson.
+.SH AUTHOR
+Lee Busby, U.C. Berkeley Math Dept., original version was completed
+July, 1985, revised October, 1986 and again May, June, 1988.
+.SH BUGS
+The cross-section drawing routine will on occasion produce
+incorrect results,
+if the corner of a small window falls in the
+middle of a very steep cell.
+Moving the window slightly is usually sufficient
+to correct the problem.

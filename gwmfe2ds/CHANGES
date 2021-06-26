@@ -1,0 +1,15 @@
+October 2008
+  o Added several config files for modern compilers under Linux.
+  o Modernized GP2's use of system libraries; it compiles once again.
+  o Changed the licensing terms to the MIT license.
+
+Initial public release (October 1997) --
+  Version 1.1 (1991) with minor changes:
+  o Removed unnecessary system fluff (calls to clock, date, etc.) to improve
+    portability.
+  o Removed Cray compiler directives.
+  o Moved parameter declarations for array dimensioning to a single file that
+    is included using the INCLUDE directive.
+  o Disabled the option of using an envelope solver.
+  o Improved treatment of Dirichlet boundary conditions.  This should fix the
+    fatal anomalies that would occasionally occur.

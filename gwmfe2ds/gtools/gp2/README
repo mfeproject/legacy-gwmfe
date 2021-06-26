@@ -1,0 +1,28 @@
+GP2 is a simple interactive visualization tool written specifically
+for 2D MFE by Lee Busby (circa 1986).  The tek emulation mode available
+through X11's xterm is used for on-screen display, and postscript is
+used for hardcopy.  The program was originally developed and used on
+the old Sun 3/50 SunOS workstations; it will likely require some
+changes to build on other platforms, though the changes should be
+reasonably straightforward for an experienced C programmer.
+
+The directory "new-src" contains the final version produced by Lee Busby.
+It corrected some bugs in the vector field routines.  Contour plotting,
+however, was broken in this release, so the prior version -- that contained
+in "src" -- is the most usable.
+
+Update (12/23/2014, NNC).  I have made a number of modifications to the
+C code, which continues to suffer bit rot, to return it to a working state.
+While the code could use a substantial overhaul to make it ansi compliant,
+I have limited the changes to just the essential ones.  In particular, the
+code assumed in several instances that int and long have the same size,
+whereas on current platforms long is twice as large.  This effected the
+size of the header section.  The modified code has been tested with the
+gcc 2.8.3 and Intel 14 and 15 compilers on 64-bit Linux (Fedora 20).
+
+Notes
+* Gp2 must be run from a Tektronix emulator.  The Tek emulation mode of
+  xterm ('xterm -t') serves this purpose.
+* Gp2 will invoke the programs gpp and gplot2 as subprocesses, and thus
+  they need to be somewhere in your executable search path as defined by
+  your PATH environment variable.

@@ -1,0 +1,31 @@
+.TH MTYPE 1 "Sept. 29, 1986"
+.SH NAME
+mtype \- determine the mfe data file type
+.SH SYNOPSIS
+.B mtype
+[ \fB\-q\fP ] [ mfefile ... ]
+.SH DESCRIPTION
+If no arguments are given, the program reads from stdin.
+Otherwise, it reads each argument in turn. If the
+.B \-q
+(quiet) flag is
+.I not
+given, a short message describing each argument file is 
+printed on the diagnostic output.
+Otherwise,
+.I mtype
+is silent. (See Diagnostics).
+.SH DIAGNOSTICS
+The following exit status codes are always returned:
+.DS
+Mfe 2d binary file: 1
+Mfe 2d ascii file : 2
+Mfe 1d ascii file : 3
+All other types   : -1
+.DE
+.SH AUTHOR
+Lee Busby, U.C. Berkeley Math Dept., September, 1986
+.SH BUGS
+.I Mtype
+is easy to fool, since any ascii file other than a mfe2d ascii file fits
+the definition of a mfe1d file.

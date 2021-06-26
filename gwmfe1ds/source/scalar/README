@@ -1,0 +1,5 @@
+By setting npde=1 in parameters.h, the systems code will work properly for
+a scalar problem.  This will result in some unnecessary overhead due to some
+dead loops, single-pass loops, and vestigial array indices, so modest
+performance improvement could be obtained by stripping down the systems code
+to a scalar-only version.

@@ -1,0 +1,48 @@
+.TH ADDCOL 1 "Sept. 29, 1986"
+.SH NAME
+addcol \- add a new column (z-value) to an mfe2d binary file
+.SH SYNOPSIS
+.B addcol
+< \fIoldfile\fP > \fInewfile\fP
+.SH DESCRIPTION
+.I Addcol
+provides a somewhat clumsy means to compute and store a new z-value as a
+function of x,y, and the existing z-values in an mfe2d binary data file.
+It must be re-compiled for each new function, using source code for the 
+new function provided by the user.
+It then is used as a simple filter, reading an mfe2d binary file from stdin
+and writing the same file with an added column onto stdout.
+.PP
+To prepare a new function, locate the main directory. (see FILES).
+An example function is provided by the file "template.c"; copy this file
+into the working current function file, named "currfunc.c". Modify 
+"currfunc.c" so that newfunc() returns the desired value, and change the
+character string "funcdesc" to reflect the description of the new z-value.
+The arguments provided to newfunc() are as follows:
+.DS
+x: the x-value at the current node
+y: the y-value at the current node
+z: an array of z-values at the current node
+
+.DE
+The z-value array is indexed from 1 through \fIn\fP,
+where \fIn\fP is the number of z-values
+currently in the file.
+A makefile is provided to compile and install the new version of
+.I addcol.
+After modifying "currfunc.c", simply run the command sequence
+.DS
+make;make install
+
+.DE
+to complete the modification.
+.SH FILES
+~/addcolumn is the main directory for this utility.
+.br
+~/addcolumn/addcol.c is the primary source code.
+.br
+~/addcolumn/template.c provides an example function, while
+.br
+~/addcolumn/currfunc.c is the current function source code.
+.SH AUTHOR
+Lee Busby, U.C. Berkeley Math Dept., December, 1985

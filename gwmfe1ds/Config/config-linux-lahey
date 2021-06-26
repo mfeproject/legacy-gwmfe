@@ -1,0 +1,9 @@
+##
+## Lahey Fortran version 6.2
+##
+
+FC = lf95
+FFLAGS = -O -I. --tp4 --sse2
+LIB =
+
+SYSOBJ = 

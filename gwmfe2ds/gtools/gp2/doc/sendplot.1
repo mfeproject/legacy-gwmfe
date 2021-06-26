@@ -1,0 +1,33 @@
+.TH SENDPLOT 1 "Sept. 29, 1986"
+.SH NAME
+sendplot \- send graphics plotfiles to the plotter
+.SH SYNOPSIS
+.B sendplot
+[ file ... ]
+.SH DESCRIPTION
+Called without arguments,
+.I sendplot
+looks for files named
+.I anything\.pf
+and copies them to the remote machine. (Currently lapis). Otherwise,
+it sends its arguments.
+Then it runs a script on the remote machine
+to execute
+.I ibmplot(1),
+and thereby produce plotted output on the 22" Versatec
+electrostatic plotter.
+.SH DIAGNOSTICS
+Produces verbose output describing what's going on.
+Returns exit status 0.
+.SH BUGS
+This script did not survive the transfer of the graphics
+system from Cartan to the Sun network.
+However, it is easy to send (Postscript) files to the
+LaserWriter.
+At the end of a session using \fIgp1\fP or \fIgp2\fP (and the \fIplot\fP
+command), you'll have a file named "plotXXXXXX.pf"
+in your working directory.
+To plot the pictures in that file,
+just send it to the LaserWriter with \fIlpr\fP:
+.sp
+lpr -Plw1 plotXXXXXX.pf

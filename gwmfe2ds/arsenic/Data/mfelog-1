@@ -1,0 +1,76 @@
+*******************************************************************************
+*  MFE2 1.1 (10/29/91)  --  07/03/92  13:58:18  --  CRAY/XMP                  *
+*  Nonlinear arsenic diffusion problem of Kent Smith.   MU = 2                *
+*  8 by (3,5) mesh.                                                           *
+*******************************************************************************
+
+
+I N T E R N A L   C O D E   P A R A M E T E R S
+
+  Max number of nodes (MNOD)             =    289
+  Max number of triangles (MTRI)         =    512
+  Max number of edges (MEDG)             =    800
+  LE solver storage allocation (SMAX)    =  70000
+  Max number of boundary nodes (MBND)    =     64
+
+
+M F E   P A R A M E T E R S
+
+  Element viscosities (ELTVSC)           = 0.2500E-04
+  Element tensions (TENSN)               = 0.0000E+00
+  Element pressures (PRESS)              = 0.0000E+00
+  Element pressure radius (RAD0)         = 0.0000E+00
+  Jacobian increment (FDINC)             = 0.1000E-06
+  Minimum element area (DXYMIN)          = 0.1000E-11
+
+  BDF2 message flag (IMSG)               =     0
+  Output frequency (OFREQ)               =     0
+  Maximum number of steps (MSTEP)        =   300
+  Solution output times (TOUT)           =  300.0       600.0       900.0    
+                                            1800.       2700.       3600.    
+
+  Relative tolerance on areas (RTOL)     = 0.1000    
+  Predictor error tolerance (PTOL)       = 0.1000E-02  0.1000E-02  0.1000E-02
+
+  Initial time step (H)                  = 0.1000E-02
+  Time step lower bound (HLB)            = 0.1000E-05
+  Jacobian time step margin (MARGIN)     =  2.000    
+  Newton iteration tolerance (NTOL)      = 0.1000    
+  Maximum number of iterations (MITR)    =     4
+  Vector tolerance in GMRES (VTOL)       = 0.1000    
+  Max no of vectors in GMRES (MVEC)      =     3
+
+
+BENVPAK STATISTICS --
+
+  NUMBER OF NODES IN GRAPH             66
+  NUMBER OF EDGES IN GRAPH            168
+  SIZE OF THE ENVELOPE                461
+  MATRIX BANDWIDTH                      9
+  OVERHEAD STORAGE                    199
+  PRIMARY STORAGE                    9090
+  TOTAL STORAGE USED                 9289
+
+
+** MAIN: Beginning integration at t = 0.0000E+00
+
+   58:! T = 0.3000E+03,  H = 0.267E+02,  CPU =    1.76(SEC)
+        NRE:NJE= 161:010,  NPF:NJF:NNR:NNF:NPEF= 000:000:002:000:000
+
+   71:! T = 0.6000E+03,  H = 0.250E+02,  CPU =    2.18(SEC)
+        NRE:NJE= 208:012,  NPF:NJF:NNR:NNF:NPEF= 000:000:004:000:000
+
+   82:! T = 0.9000E+03,  H = 0.212E+02,  CPU =    2.49(SEC)
+        NRE:NJE= 247:013,  NPF:NJF:NNR:NNF:NPEF= 000:000:005:000:000
+
+  102:! T = 0.1800E+04,  H = 0.538E+02,  CPU =    3.05(SEC)
+        NRE:NJE= 315:015,  NPF:NJF:NNR:NNF:NPEF= 000:000:007:000:000
+
+  111:! T = 0.2700E+04,  H = 0.142E+03,  CPU =    3.27(SEC)
+        NRE:NJE= 339:016,  NPF:NJF:NNR:NNF:NPEF= 000:000:008:000:000
+
+  125:! T = 0.3600E+04,  H = 0.283E+02,  CPU =    3.65(SEC)
+        NRE:NJE= 389:017,  NPF:NJF:NNR:NNF:NPEF= 000:000:009:000:001
+
+** MAIN: Completed integration to final TOUT.
+** Halting execution.

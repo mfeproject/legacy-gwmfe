@@ -1,0 +1,78 @@
+*******************************************************************************
+*  MFE2 1.1 (10/29/91)  --  06/24/92  22:33:59  --  CRAY/XMP                  *
+*  Single carrier drift-diffusion equation for semiconductor device           *
+*  modelling.  15x35 grid.  Using the transformation p = exp(u).              *
+*******************************************************************************
+
+
+I N T E R N A L   C O D E   P A R A M E T E R S
+
+  Number of PDEs (NPDE)                  =      2
+  Max number of nodes (MNOD)             =    693
+  Max number of triangles (MTRI)         =   1280
+  Max number of edges (MEDG)             =   1972
+  LE solver storage allocation (SMAX)    = 500000
+  Max number of boundary nodes (MBND)    =    108
+
+
+M F E   P A R A M E T E R S
+
+  Equation weights (WPDE)                =  1.000       100.0    
+  Element viscosities (ELTVSC)           = 0.2500E-04  0.2500E-04
+  Element tensions (TENSN)               = 0.0000E+00  0.0000E+00
+  Element pressures (PRESS)              = 0.1000E-08  0.1000E-10
+  Element pressure radius (RAD0)         = 0.1000E-02
+  Jacobian increment (FDINC)             = 0.1000E-06
+  Minimum element area (DXYMIN)          = 0.1000E-11
+
+  BDF2 message flag (IMSG)               =     0
+  Output frequency (OFREQ)               =     0
+  Maximum number of steps (MSTEP)        =   300
+  Solution output times (TOUT)           =  1.000       5.000       10.00    
+                                            25.00       50.00       100.0    
+                                            200.0    
+
+  Relative tolerance on areas (RTOL)     = 0.1000    
+  Predictor error tolerance (PTOL)       = 0.1000E-02  0.1000E-04  0.1000E-02
+                                           0.1000E-02
+
+  Initial time step (H)                  = 0.1000E-05
+  Time step lower bound (HLB)            = 0.1000E-07
+  Jacobian time step margin (MARGIN)     =  2.000    
+  Newton iteration tolerance (NTOL)      = 0.1000    
+  Maximum number of iterations (MITR)    =     4
+  Vector tolerance in GMRES (VTOL)       = 0.1000    
+  Max no of vectors in GMRES (MVEC)      =     3
+
+
+U S E R   D E F I N E D   V A R I A B L E S
+
+  (lambda  ) = 0.1000E-02
+  (eps     ) = 0.1000    
+
+
+** MAIN: Beginning integration at t = 0.0000E+00
+
+   41:! T = 0.1000E+01,  H = 0.864E-01,  CPU =   11.10(SEC)
+        NRE:NJE= 119:012,  NPF:NJF:NNR:NNF:NPEF= 000:000:003:000:000
+
+   72:! T = 0.5000E+01,  H = 0.110E+00,  CPU =   16.56(SEC)
+        NRE:NJE= 215:015,  NPF:NJF:NNR:NNF:NPEF= 000:000:005:000:000
+
+  104:! T = 0.1000E+02,  H = 0.147E+00,  CPU =   22.32(SEC)
+        NRE:NJE= 319:018,  NPF:NJF:NNR:NNF:NPEF= 000:000:008:000:000
+
+  136:! T = 0.2500E+02,  H = 0.948E+00,  CPU =   27.26(SEC)
+        NRE:NJE= 415:020,  NPF:NJF:NNR:NNF:NPEF= 000:000:010:000:000
+
+  152:! T = 0.5000E+02,  H = 0.144E+01,  CPU =   30.23(SEC)
+        NRE:NJE= 465:022,  NPF:NJF:NNR:NNF:NPEF= 000:000:012:000:000
+
+  177:! T = 0.1000E+03,  H = 0.440E+01,  CPU =   34.51(SEC)
+        NRE:NJE= 546:024,  NPF:NJF:NNR:NNF:NPEF= 000:000:014:000:000
+
+  195:! T = 0.2000E+03,  H = 0.932E+01,  CPU =   37.35(SEC)
+        NRE:NJE= 602:025,  NPF:NJF:NNR:NNF:NPEF= 000:000:015:000:000
+
+** MAIN: Completed integration to final TOUT.
+** Halting execution.

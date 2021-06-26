@@ -1,0 +1,9 @@
+##
+## GNU Fortran compiler
+##
+
+FC = gfortran
+FFLAGS = -O2 -I.
+LIB =
+
+SYSOBJ =

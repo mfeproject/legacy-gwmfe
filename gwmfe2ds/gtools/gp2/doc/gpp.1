@@ -1,0 +1,32 @@
+.TH GPP 1 "August, 1986"
+.SH NAME
+gpp \- graphics pre-processor for mfe2d ascii files
+.SH SYNOPSIS
+.B gpp
+[ \fB\-q\fP ] file [ file ... ]
+.SH DESCRIPTION
+.I Gpp
+reads one or more mfe2d ascii format files and converts them into a
+binary form suitable for use with
+.I gp2(1).
+If the
+.B \-q
+(quiet) flag is
+.I not
+given, then
+.I gpp
+writes a summary of the contents of each file onto
+standard output.
+.I Gpp
+is called automatically by
+.I gp2.
+.SH FILES
+gppXXXXXX		temporary output file
+.SH DIAGNOSTICS
+.I Gpp
+returns the error status of its last input file,
+1 if an error was encountered, (the binary file is not
+created), 0 otherwise.
+.SH AUTHOR
+Lee Busby, U.C. Berkeley Math Dept., original version was
+July, 1985, revised August, 1986.

@@ -1,0 +1,178 @@
+Using GWMFE2DS
+--------------
+
+This file should provide just enough information to compile GWMFE2DS and run a
+few canned examples.  Beyond that the going gets rough.  Unfortunately, there
+is no documentation other than what can be found in the example code and in the
+papers [1] and [2].
+
+A few preliminary comments about the code:   
+
+o GWMFE2DS evolved over a period of years ending in about 1991.  Since that
+  time, I've come to regard some of the programming practices used as very
+  ill-advised (but legal nonetheless): common blocks defined differently
+  in different routines and array arguments treated as if they were simply
+  pointers are two notable examples.
+  
+  I've since ceased development of this code, and have moved to a completely
+  new module-oriented implementation of GWMFE in Fortran 90.  If you are
+  interested, you can discuss the possibility of using this version with me
+  (carlson@math.purdue.edu).
+  
+o Much of the data structure and organization of the computations were
+  designed for the Cray/XMP which is a vector machine.  Unfortunately,
+  this design is quite inappropriate for current cache-based computer
+  architectures, and GWMFE2DS performs more poorly on these types of
+  machines than it otherwise should.
+
+
+What's Here?
+------------
+
+COPYING   -- Copyright and right-to-use information.
+Config/*  -- Platform specific configuration files
+source/*  -- Canonical GWMFE2DS source files:
+             source/system -- for systems of PDEs
+             source/scalar -- for single PDE
+             source/common -- common to both
+gtools/*  -- Graphics tools (more on this later)
+
+Examples from [2]:
+
+arsenic/* -- Nonlinear arsenic diffusion problem from semiconductor process
+             modeling (Section 6.1).
+heat/*    -- Heat equation example illustrating grid collapse (Section 5).
+oil/*     -- Buckley-Leverett 5-spot problem (Section 6.3).
+semi/*    -- Drift-diffusion equations from semiconductor device modeling
+             (Section 6.2).
+soap/*    -- Motion by mean curvature (soap bubble problem) (Section 6.4)
+burgers/* -- 2D Burgers' equation test problem (from earlier 2D work).
+
+
+Getting Started
+---------------
+
+1) Select a configuration file.  In Config you'll find a collection of
+   configuration files for different systems.  Find the one that matches
+   yours, and copy (or link) it to config; for example,
+   
+      cp config-sunos-f77 config (or ln -s config-sunos-f77 config)
+      
+   If none of the files matches your system, you'll need to write your
+   own -- start with one that is close.  If you do write a working config
+   file for a new system, please send it to me so that I may include it
+   with this distribution.
+
+2) Run the examples.  Each of the example directories listed above contain
+   the extra bits of code necessary to form the complete MFE code for that
+   particular example, along with sample input files.  Typing "make" will
+   build the executable "go", and typing "make example1" will, for example,
+   run the code with the first sample input (you'll need to look at the
+   Makefile to see how many examples there are).  The code reads one input
+   file, mfein, and produces two output files, mfelog and mfeout.  The
+   inputs are echoed to mfelog together with periodic progress reports from
+   the ODE integrator (indicating number of steps taken, number of residuals,
+   number of jacobians, etc.)  You should compare the results in this file
+   to those archived in the directory Data to verify that things are running
+   properly.  The number of residual and jacobian evaluations (NRE and NJE)
+   should match fairly closely (within 5%) at corresponding times.  It is
+   unreasonable, though, to expect an exact match due to differences in
+   math libraries, etc.  The actual MFE solution is written to mfeout in
+   binary format; see the next section.
+
+
+How do I view the results?
+--------------------------
+
+I was afraid you'd ask.  In gtools/gp2 you'll find a simple visualization
+package written specifically for 2D MFE by Lee Busby back in the mid-80s.
+This C code was written for the old Sun 3/50 SunOS workstations of that
+era, and it isn't very portable.  I've managed to build it under Linux
+in addition to SunOS, but nothing else, though I haven't tried very hard.
+An experienced C programmer should be able to port this to other platforms
+without too much effort.  (Note that the configuration file set above has
+no effect here.)  If you do manage to port GP2 to another platform I'd
+appreciate you sending me the patches so that I can incorporate them with
+this distribution.
+
+Good, I was able to build GP2.  Next:
+
+1) Build mkgrf.  In gtools, type "make mkgrf" to build the GP2 filter mkgrf.
+
+2) Copy mkgrf into the example directory where you've run the MFE code.
+   Running mkgrf will filter the binary MFE output file "mfeout" to an ascii
+   input file "mfegrf" for GP2.  (Note: in arsenic you'll find a customized
+   mkgrf that prompts for the domain size.)
+   
+3) Run gp2.  GP2 produces output for a Tektronics display.  If you're
+   running the X11 windowing system, don't worry, you've got a tek display
+   emulator hidden in each xterm window.  To reveal it, position the mouse
+   over the xterm window and click the middle mouse button while the control
+   key is pressed.  A menu should pop-up (assuming you haven't mucked about
+   with the key/mouse bindings), and near the bottom is the item "Switch to
+   Tek mode".  When you select this item, a new tek display emulator window
+   will appear.  Run gp2 in this window.  See the man pages in gtools/gp2/doc
+   for instructions on using gp2.
+   
+Damn, I couldn't build GP2.  You have two options:
+
+1) Redouble your efforts to build GP2.  (Consider hiring/coercing a savvy
+   grad student.)
+   
+2) Roll your own graphics program.  There are a lot of possibilities here,
+   depending on your sophistication.  I've used Mathematica to produce
+   pictures -- it's not trivial but the results are nice.  In fact the
+   pictures for the SISC article were produced using Mathematica.  The main
+   obstacle is that the solution is presented on an unstructured triangular
+   mesh.  Most canned programs assume data on a regular rectangular grid,
+   which is next to worthless for MFE (even if you attempt to interpolate).
+   What you need to look for is the ability to draw triangles in 3D.  Use
+   mkgrf.f as a guide to writing a filter to suit your requirements.
+   
+
+Applying GWMFE2DS to a New Problem
+----------------------------------   
+
+Here I'll only try to outline the procedure for applying GWMFE2DS to a new
+problem.  In the absence of any real documentation, you'll need to use the
+provided examples as your guide.  The 1D and 2D SISC papers should be useful
+as well.
+
+1) Create a new directory at the same level as the other example directories,
+   and copy one of the existing makefiles there.  If you have a scalar problem,
+   get it from one of the scalar examples, or if you have a system, from one
+   of the system examples.  This file will probably need to be modified but
+   it should be close to what you need.
+   
+2) You need to provide two routines: PDERHS and PSETUP.
+
+   PDERHS -- This evaluates the inner products of the PDE right hand side
+   with the GWMFE basis functions.  The name varies, but typically it is
+   found in the file pde.f
+   
+   PSETUP -- This sets up the problem, describing boundary conditions,
+   initial grid, initial solution, etc.  Again the file name varies but
+   this is typically found in psetup.f
+   
+   The routines from one of the provided examples should provide a good
+   starting point.
+   
+3) The makefile is written so that the rest of the GWMFE2DS code is
+   automatically picked up out of the source directory.  Occasionally it
+   is necessary to modify one of these routines.  Simply copy it from
+   the source directory to your example directory and modify it.  This
+   was done for several of the examples.
+   
+4) Copy the file parameters.h from one of the examples.  This defines
+   basic parameters used to dimension arrays in the code, and it is
+   essential that these be set properly.
+  
+  
+References
+----------
+
+[1] Carlson and Miller, "Design and application of a gradient-weighted moving
+    finite element code I: In one dimension", SIAM J. Sci. Comput., 19 (1998).
+
+[2] Carlson and Miller, "Design and application of a gradient-weighted moving
+    finite element code II: In two dimensions", SIAM J. Sci. Comput., 19 (1998).

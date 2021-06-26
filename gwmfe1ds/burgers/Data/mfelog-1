@@ -1,0 +1,267 @@
+*******************************************************************************
+*  Burgers equation with double-sine initial conditions                       *
+*  Input for Figure 6.3: No vertical rescaling                                *
+*******************************************************************************
+
+
+ I N I T I A L   C O N D I T I O N S
+
+  Number of elements (NELT)              =    40
+  Number of grid segments (NSEG)         =    40
+  Number of cells per segment (NISEG)    =   1   1   1   1   1   1   1   1   1
+                                             1   1   1   1   1   1   1   1   1
+                                             1   1   1   1   1   1   1   1   1
+                                             1   1   1   1   1   1   1   1   1
+                                             1   1   1   1
+  Initial conditions (YSEG):
+
+             x           u(k)
+            ---         ------
+            .0000       .0000    
+           0.2500E-01   .1957    
+           0.5000E-01   .3872    
+           0.7500E-01   .5707    
+            .1000       .7423    
+            .1250       .8984    
+            .1500       1.036    
+            .1750       1.152    
+            .2000       1.245    
+            .2250       1.312    
+            .2500       1.354    
+            .2750       1.368    
+            .3000       1.356    
+            .3250       1.317    
+            .3500       1.255    
+            .3750       1.169    
+            .4000       1.063    
+            .4250       .9402    
+            .4500       .8029    
+            .4750       .6549    
+            .5000       .5000    
+            .5250       .3420    
+            .5500       .1848    
+            .5750      0.3219E-01
+            .6000      -.1123    
+            .6250      -.2452    
+            .6500      -.3635    
+            .6750      -.4647    
+            .7000      -.5465    
+            .7250      -.6075    
+            .7500      -.6464    
+            .7750      -.6630    
+            .8000      -.6572    
+            .8250      -.6298    
+            .8500      -.5820    
+            .8750      -.5158    
+            .9000      -.4333    
+            .9250      -.3373    
+            .9500      -.2308    
+            .9750      -.1172    
+            1.000       .0000    
+ 
+  Left boundary conditions (BCL)         = 1 1
+  Right boundary conditions (BCR)        = 1 1
+
+
+ M F E   P A R A M E T E R S
+
+  Kind of segment viscosities (KREG)     =     2
+  Segment viscosities (SEGVSC)           = 0.1000E-06
+  Segment springs (SEGSPR)               =  .0000    
+  Lower bound on cell width (DXMIN)      =  .0000    
+  Finite difference increment (FDINC)    = 0.1000E-06
+
+  BDF2 message flag (IMSG)               =     0
+  Output frequency (OFREQ)               =     0
+  Maximum number of steps (MSTEP)        =  2000
+  Solution output times (TOUT)           =  .2000       .4000       .6000    
+                                            .8000       1.000       1.200    
+                                            1.400       1.426       1.428    
+                                            1.430       1.432       1.434    
+                                            1.436       1.438       1.440    
+                                            1.442       1.444       1.446    
+                                            1.448       1.450       1.452    
+                                            1.454       2.000       4.000    
+                                            6.000       8.000       10.00    
+
+  Relative tolerance on dx (RTOL)        =  .1000    
+  Predictor error tolerance (PTOL)       = 0.1000E-02  0.1000E-02
+
+  Initial time step (H)                  = 0.1000E-02
+  Time step lower bound (HLB)            = 0.1000E-07
+  Jacobian time step margin (MARGIN)     =  2.000    
+  Newton iteration tolerance (NTOL)      =  .1000    
+  Max number of iterations (MITR)        =     4
+  Vector tolerance in GMRES (VTOL)       =  .1000    
+  Max no. of vectors in GMRES (MVEC)     =     3
+
+
+ U S E R   D E F I N E D   V A R I A B L E S
+
+  (visc    ) = 0.1000E-03
+  (uscf    ) =  1.000    
+
+
+** MAIN: Beginning integration at t = 0.0000E+00
+
+   90:  T = 0.2000E+00,  H = 0.331E-02,  CPU =     .18(SEC)
+        NRE:NJE= 325:026,  NPF:NJF:NNR:NNF:NPEF= 000:000:014:001:001
+
+** SCHECK: Bad element -- no.   14
+
+** SCHECK: Bad element -- no.   13
+
+** SCHECK: Bad element -- no.   12
+
+** SCHECK: Bad element -- no.   12
+
+** SCHECK: Bad element -- no.   12
+
+** SCHECK: Bad element -- no.   12
+
+** SCHECK: Bad element -- no.   12
+
+** SCHECK: Bad element -- no.   11
+
+** SCHECK: Bad element -- no.   11
+
+** SCHECK: Bad element -- no.   11
+
+** SCHECK: Bad element -- no.   33
+
+** SCHECK: Bad element -- no.    9
+
+** SCHECK: Bad element -- no.    9
+
+  239:  T = 0.4000E+00,  H = 0.464E-02,  CPU =     .47(SEC)
+        NRE:NJE= 870:073,  NPF:NJF:NNR:NNF:NPEF= 010:000:040:015:002
+
+  298:  T = 0.6000E+00,  H = 0.178E-01,  CPU =     .60(SEC)
+        NRE:NJE=1107:093,  NPF:NJF:NNR:NNF:NPEF= 010:000:055:016:005
+
+** SCHECK: Bad element -- no.   29
+
+** SCHECK: Bad element -- no.   32
+
+** SCHECK: Bad element -- no.    6
+
+** SCHECK: Bad element -- no.    6
+
+  332:  T = 0.8000E+00,  H = 0.240E-01,  CPU =     .67(SEC)
+        NRE:NJE=1241:106,  NPF:NJF:NNR:NNF:NPEF= 012:000:065:018:005
+
+** SCHECK: Bad element -- no.   37
+
+** SCHECK: Bad element -- no.   37
+
+  350:  T = 0.1000E+01,  H = 0.238E-01,  CPU =     .71(SEC)
+        NRE:NJE=1311:113,  NPF:NJF:NNR:NNF:NPEF= 012:000:069:020:005
+
+** SCHECK: Bad element -- no.    5
+
+** SCHECK: Bad element -- no.    5
+
+** SCHECK: Bad element -- no.    5
+
+  366:  T = 0.1200E+01,  H = 0.105E-01,  CPU =     .75(SEC)
+        NRE:NJE=1380:120,  NPF:NJF:NNR:NNF:NPEF= 015:000:074:021:005
+
+** SCHECK: Bad element -- no.   40
+
+  386:  T = 0.1400E+01,  H = 0.192E-01,  CPU =     .79(SEC)
+        NRE:NJE=1455:127,  NPF:NJF:NNR:NNF:NPEF= 016:000:078:023:005
+
+** SCHECK: Bad element -- no.   40
+
+** SCHECK: Bad element -- no.   40
+
+  388:  T = 0.1426E+01,  H = 0.480E-02,  CPU =     .79(SEC)
+        NRE:NJE=1461:128,  NPF:NJF:NNR:NNF:NPEF= 018:000:078:023:005
+
+  388:  T = 0.1428E+01,  H = 0.480E-02,  CPU =     .79(SEC)
+        NRE:NJE=1461:128,  NPF:NJF:NNR:NNF:NPEF= 018:000:078:023:005
+
+  388:  T = 0.1430E+01,  H = 0.480E-02,  CPU =     .79(SEC)
+        NRE:NJE=1461:128,  NPF:NJF:NNR:NNF:NPEF= 018:000:078:023:005
+
+** SCHECK: Bad element -- no.   40
+
+  389:  T = 0.1432E+01,  H = 0.240E-02,  CPU =     .80(SEC)
+        NRE:NJE=1463:129,  NPF:NJF:NNR:NNF:NPEF= 019:000:078:023:005
+
+** SCHECK: Bad element -- no.   40
+
+  390:  T = 0.1434E+01,  H = 0.117E-02,  CPU =     .80(SEC)
+        NRE:NJE=1469:130,  NPF:NJF:NNR:NNF:NPEF= 020:000:079:023:005
+
+** SCHECK: Bad element -- no.   37
+
+  399:  T = 0.1436E+01,  H = 0.236E-03,  CPU =     .83(SEC)
+        NRE:NJE=1521:134,  NPF:NJF:NNR:NNF:NPEF= 020:000:083:025:006
+
+  405:  T = 0.1438E+01,  H = 0.349E-03,  CPU =     .85(SEC)
+        NRE:NJE=1553:138,  NPF:NJF:NNR:NNF:NPEF= 020:000:087:025:006
+
+  412:  T = 0.1440E+01,  H = 0.310E-03,  CPU =     .87(SEC)
+        NRE:NJE=1587:142,  NPF:NJF:NNR:NNF:NPEF= 020:000:091:025:006
+
+  417:  T = 0.1442E+01,  H = 0.470E-03,  CPU =     .88(SEC)
+        NRE:NJE=1609:144,  NPF:NJF:NNR:NNF:NPEF= 020:000:093:025:006
+
+  421:  T = 0.1444E+01,  H = 0.476E-03,  CPU =     .89(SEC)
+        NRE:NJE=1623:145,  NPF:NJF:NNR:NNF:NPEF= 020:000:094:025:006
+
+  425:  T = 0.1446E+01,  H = 0.679E-03,  CPU =     .90(SEC)
+        NRE:NJE=1631:145,  NPF:NJF:NNR:NNF:NPEF= 020:000:094:025:006
+
+  427:  T = 0.1448E+01,  H = 0.834E-03,  CPU =     .90(SEC)
+        NRE:NJE=1639:146,  NPF:NJF:NNR:NNF:NPEF= 020:000:095:025:006
+
+  429:  T = 0.1450E+01,  H = 0.116E-02,  CPU =     .90(SEC)
+        NRE:NJE=1643:146,  NPF:NJF:NNR:NNF:NPEF= 020:000:095:025:006
+
+  430:  T = 0.1452E+01,  H = 0.164E-02,  CPU =     .91(SEC)
+        NRE:NJE=1645:146,  NPF:NJF:NNR:NNF:NPEF= 020:000:095:025:006
+
+  431:  T = 0.1454E+01,  H = 0.284E-02,  CPU =     .91(SEC)
+        NRE:NJE=1647:146,  NPF:NJF:NNR:NNF:NPEF= 020:000:095:025:006
+
+  454:  T = 0.2000E+01,  H = 0.700E-01,  CPU =     .96(SEC)
+        NRE:NJE=1735:154,  NPF:NJF:NNR:NNF:NPEF= 020:000:099:027:006
+
+** SCHECK: Bad element -- no.    4
+
+** SCHECK: Bad element -- no.    5
+
+** SCHECK: Bad element -- no.    5
+
+** SCHECK: Bad element -- no.    5
+
+  495:  T = 0.4000E+01,  H = 0.602E-01,  CPU =    1.08(SEC)
+        NRE:NJE=1967:180,  NPF:NJF:NNR:NNF:NPEF= 021:000:122:037:006
+
+** SCHECK: Bad element -- no.    3
+
+** SCHECK: Bad element -- no.    3
+
+** SCHECK: Bad element -- no.    3
+
+** SCHECK: Bad element -- no.    3
+
+  518:  T = 0.6000E+01,  H = 0.187E-01,  CPU =    1.17(SEC)
+        NRE:NJE=2135:197,  NPF:NJF:NNR:NNF:NPEF= 023:000:139:044:006
+
+** SCHECK: Bad element -- no.    2
+
+** SCHECK: Bad element -- no.    2
+
+** SCHECK: Bad element -- no.    2
+
+  532:  T = 0.8000E+01,  H = 0.223E+00,  CPU =    1.22(SEC)
+        NRE:NJE=2207:207,  NPF:NJF:NNR:NNF:NPEF= 023:000:146:048:006
+
+  537:  T = 0.1000E+02,  H = 0.413E+00,  CPU =    1.24(SEC)
+        NRE:NJE=2255:213,  NPF:NJF:NNR:NNF:NPEF= 023:000:151:050:006
+
+** MAIN: Completed integration to final TOUT.
+** Halting execution.

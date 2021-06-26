@@ -1,0 +1,38 @@
+Burgers equation plus a strong nonlinear source
+Input for Figure 6.7a: Strong source
+$
+'nelt'  47
+'nseg'  5
+'niseg' 2 5 20 10 10
+'yseg' 
+  1.   -1.
+  1.   -100.d-3
+  1.   -5.d-3
+  0.    5.d-3
+  0.    100.d-3
+  0.    1.
+'bcl'   1 1
+'bcr'   1 1
+'wpde'  1.
+'kreg'  2
+'segvsc' 25.e-6
+'segspr' 0.
+'dxmin'  0.
+'fdinc'  1.e-7
+'imsg'   0
+'ofreq'  0
+'mstep'  2000
+'nout'   11
+'tout'  .0 .01 .02 .03 .04 .05 .1 .2 .3 .4 .5
+'rtol'   .1
+'ptol'   1.e-3  1.e-3
+'h'      1.e-6
+'hlb'    1.e-9
+'margin' 2.
+'ntol'   .1
+'mitr'   4
+'vtol'   .1
+'mvec'   3
+'visc'   1.e-3
+'uscf'   1.
+'cg'     .04

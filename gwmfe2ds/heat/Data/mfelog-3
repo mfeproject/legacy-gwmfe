@@ -1,0 +1,72 @@
+*******************************************************************************
+*  Heat equation -- testing grid collapse; srcq = 1                           *
+*******************************************************************************
+
+
+I N T E R N A L   C O D E   P A R A M E T E R S
+
+  Max number of nodes (MNOD)             =    289
+  Max number of triangles (MTRI)         =    512
+  Max number of edges (MEDG)             =    800
+  LE solver storage allocation (SMAX)    = 172000
+  Max number of boundary nodes (MBND)    =     64
+
+
+M F E   P A R A M E T E R S
+
+  Element viscosities (ELTVSC)           = 0.4000E-05
+  Element tensions (TENSN)               =  0.000    
+  Element pressures (PRESS)              =  0.000    
+  Element pressure radius (RAD0)         =  0.000    
+  Jacobian increment (FDINC)             = 0.1000E-06
+  Minimum element area (DXYMIN)          = 0.1000E-11
+
+  BDF2 message flag (IMSG)               =     0
+  Output frequency (OFREQ)               =    20
+  Maximum number of steps (MSTEP)        =   100
+  Solution output times (TOUT)           =  100.0    
+
+  Relative tolerance on areas (RTOL)     = 0.1000    
+  Predictor error tolerance (PTOL)       = 0.1000E-02  0.1000E-02  0.1000E-02
+
+  Initial time step (H)                  = 0.1000E-02
+  Time step lower bound (HLB)            = 0.1000E-03
+  Jacobian time step margin (MARGIN)     =  2.000    
+  Newton iteration tolerance (NTOL)      = 0.1000    
+  Maximum number of iterations (MITR)    =     4
+  Vector tolerance in GMRES (VTOL)       = 0.1000    
+  Max no of vectors in GMRES (MVEC)      =     3
+
+
+U S E R   D E F I N E D   V A R I A B L E S
+
+  (srcq    ) =  1.000    
+
+
+** MAIN: Beginning integration at t = 0.0000E+00
+
+   20:* T = 0.4269E-01,  H = 0.487E-02,  CPU =    0.87(SEC)
+        NRE:NJE= 058:004,  NPF:NJF:NNR:NNF:NPEF= 000:000:002:000:000
+
+   40:* T = 0.3062E+00,  H = 0.351E-01,  CPU =    1.34(SEC)
+        NRE:NJE= 109:005,  NPF:NJF:NNR:NNF:NPEF= 000:000:002:000:000
+
+   60:* T = 0.2497E+01,  H = 0.190E-01,  CPU =    2.84(SEC)
+        NRE:NJE= 198:015,  NPF:NJF:NNR:NNF:NPEF= 000:000:010:003:000
+
+   80:* T = 0.2607E+01,  H = 0.203E-02,  CPU =    3.81(SEC)
+        NRE:NJE= 273:020,  NPF:NJF:NNR:NNF:NPEF= 000:000:013:004:000
+
+** SCHECK: Bad triangle -- no.    40  dxy=-0.353E-06 ( 0.100E+01, 0.875E-01)
+
+** SCHECK: Bad triangle -- no.    40  dxy=-0.650E-06 ( 0.100E+01, 0.876E-01)
+
+** SCHECK: Bad triangle -- no.    40  dxy=-0.818E-06 ( 0.100E+01, 0.875E-01)
+
+** SCHECK: Bad triangle -- no.    40  dxy=-0.156E-06 ( 0.100E+01, 0.875E-01)
+
+  100:* T = 0.2633E+01,  H = 0.873E-03,  CPU =    5.83(SEC)
+        NRE:NJE= 400:033,  NPF:NJF:NNR:NNF:NPEF= 000:000:026:010:000
+
+** MAIN: Maximum number of steps completed.
+** Halting execution.

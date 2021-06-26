@@ -1,0 +1,16 @@
+.TH CCS 1 "Sept. 30, 1986"
+.SH NAME
+ccs \- change character size on Tek4014 terminals
+.SH SYNOPSIS
+.B ccs
+1, 2, 3, or 4
+.SH DESCRIPTION
+.I ccs 1
+sets the largest character size on the tek 4014 terminal;
+.I ccs 4
+sets the smallest. The other values are intermediate.
+.SH DIAGNOSTICS
+Any argument except 1-4 gives a usage message and returns exit status 1.
+Otherwise
+.I ccs
+returns exit status 0.

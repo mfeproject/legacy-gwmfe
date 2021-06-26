@@ -1,0 +1,57 @@
+*******************************************************************************
+*  MFE2 1.1 (10/29/91)  --  06/26/92  21:23:49  --  CRAY/XMP                  *
+*  Motion by mean curvature with constant internal pressure.                  *
+*  Gouda cheese problem. 33x33 grid.                                          *
+*******************************************************************************
+
+
+I N T E R N A L   C O D E   P A R A M E T E R S
+
+  Max number of nodes (MNOD)             =   1089
+  Max number of triangles (MTRI)         =   2048
+  Max number of edges (MEDG)             =   3136
+  LE solver storage allocation (SMAX)    = 677000
+  Max number of boundary nodes (MBND)    =    128
+
+
+M F E   P A R A M E T E R S
+
+  Element viscosities (ELTVSC)           = 0.2500E-04
+  Element tensions (TENSN)               = 0.1000E-02
+  Element pressures (PRESS)              = 0.1000E-06
+  Element pressure radius (RAD0)         = 0.1000E-02
+  Jacobian increment (FDINC)             = 0.1000E-06
+  Minimum element area (DXYMIN)          = 0.0000E+00
+
+  BDF2 message flag (IMSG)               =     0
+  Output frequency (OFREQ)               =     0
+  Maximum number of steps (MSTEP)        =   400
+  Solution output times (TOUT)           =  4.000       5.000    
+
+  Relative tolerance on areas (RTOL)     = 0.1000    
+  Predictor error tolerance (PTOL)       = 0.1000E-02  0.1000E-02  0.1000E-02
+
+  Initial time step (H)                  = 0.1000E-05
+  Time step lower bound (HLB)            = 0.1000E-07
+  Jacobian time step margin (MARGIN)     =  2.000    
+  Newton iteration tolerance (NTOL)      = 0.1000    
+  Maximum number of iterations (MITR)    =     4
+  Vector tolerance in GMRES (VTOL)       = 0.1000    
+  Max no of vectors in GMRES (MVEC)      =     3
+
+
+U S E R   D E F I N E D   V A R I A B L E S
+
+  (h       ) =  2.000    
+
+
+** MAIN: Beginning integration at t = 0.0000E+00
+
+   99:! T = 0.4000E+01,  H = 0.848E-01,  CPU =   69.42(SEC)
+        NRE:NJE= 440:046,  NPF:NJF:NNR:NNF:NPEF= 000:000:036:002:000
+
+  149:! T = 0.5000E+01,  H = 0.324E-01,  CPU =   96.20(SEC)
+        NRE:NJE= 650:062,  NPF:NJF:NNR:NNF:NPEF= 000:000:052:002:000
+
+** MAIN: Completed integration to final TOUT.
+** Halting execution.

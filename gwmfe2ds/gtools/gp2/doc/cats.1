@@ -1,0 +1,61 @@
+.TH CATS 1 "Oct. 15, 1986"
+.SH NAME
+cats \- catenate selected frames from mfe1d and mfe2d (binary) data files
+.SH SYNOPSIS
+.B cats
+[ \fIframelist\fP ] file [ file ... ] > newfile
+.SH DESCRIPTION
+.I Cats
+catenates selected frames from one or more mfe data files
+and places the result on its standard output.
+(All the files must be either 1D or 2D, of course.)
+The
+.I framelist
+is a blank-separated list of frame numbers,
+or ranges of the form "\fIn\-m\fP".
+If no
+.I framelist
+is given, then all frames are written to the output.
+Frames are assumed to be numbered consecutively from
+the first frame of the first file given to the last
+frame of the last file given.
+If the file list is mfe2d type, then the number of nodes, edges, cells, and
+z-values is checked in successive files to verify that they are the same.
+The edge-list and cell-list are taken from the first file given.
+Note that the output of
+.I cats
+will usually be re-directed,
+as it is not ascii in the 2D case.
+.SH EXAMPLES
+The first example creates "file3" as the concatenation of "file1" and "file2".
+The second example selects frames 1,2,7,8,9, and 10 from "oldfile" and places
+the result in "newfile", while the third example is just a slower version of
+cat(1).
+.DS
+\fBcats\fP file1 file2 > file3
+\fBcats\fP 1 2 7-10 oldfile > newfile
+\fBcats\fP any_ascii_file
+
+.DE
+.SH FILES
+/tmp/cats1XXXXXX	(concatenated file arguments)
+.br
+/tmp/cats2XXXXXX	(created only if a framelist is entered)
+.SH DIAGNOSTICS
+Returns exit status 1 for unforgiveable errors, 0 otherwise.
+Unforgiveable errors include non-existent files and unintelligible
+.I framelists.
+Forgiveable errors include duplicated values in the
+.I framelist
+or values
+which are too large or small - these are noted and ignored.
+.SH AUTHOR
+Lee Busby, U.C. Berkeley Math Dept., October, 1986
+.SH "BUGS AND LIMITATIONS"
+Maximum total frames is 500;
+maximum 50 file arguments or framelist entries.
+Mfe2d ascii files will be treated as if they were mfe1d files,
+with undoubtably incorrect results.
+Each argument is checked first to see if it is a filename in the current
+directory, then to see if it is numeric, so it's best not to use
+file names which are just numbers.
