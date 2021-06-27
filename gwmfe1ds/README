@@ -58,6 +58,8 @@ Getting Started
    own -- start with one that is close.  If you do write a working config
    file for a new system, please send it to me so that I may include it
    with this distribution.
+   
+   EDIT: The config file comes pre-linked to config-linux-gfortran.
 
 2) Run the examples.  Each of the example directories listed above contain
    the extra bits of code necessary to form the complete MFE code for that

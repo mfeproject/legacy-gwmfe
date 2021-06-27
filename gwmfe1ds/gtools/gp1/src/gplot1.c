@@ -11,7 +11,6 @@ PICTURESPEC	pspec;
 PAGETYPE	page,*pg = &page;
 PLOTSPEC	plspec;
 FILE_TABLE_ENTRY file_name[MAXFILES];
-FILE		*pfp = NULL;
 char		pltfil_[30] = "plotXXXXXX";
 double		xaxis_,yaxis_;
 int		chrsiz_;

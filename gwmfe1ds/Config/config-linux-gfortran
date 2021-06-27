@@ -3,7 +3,7 @@
 ##
 
 FC = gfortran
-FFLAGS = -O -I. -w
+FFLAGS = -O -I. -w -std=legacy
 LIB =
 
 SYSOBJ = 
