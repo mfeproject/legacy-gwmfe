@@ -5,5 +5,3 @@
 FC = f90
 FFLAGS = -O -dusty -w -ccarg "-m486 -malign-double" -I.
 LIB =
-
-SYSOBJ = second_nag.o

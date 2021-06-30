@@ -7,5 +7,3 @@ FC = f77
 # If you encounter problems, try replacing -fast with -O
 FFLAGS = -u -fnonstd -fast -Bstatic
 LIB =
-
-SYSOBJ = second_etime.o

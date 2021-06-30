@@ -7,10 +7,10 @@ PROBLEM = NAVIER-STOKES
 OBJ = main.o enorm.o scheck.o wrlog.o wrgrf.o init.o rdvars.o ivals.o \
       res.o jac.o ydot.o linsol.o eltfy.o eltvec.o eltpp.o lapl.o laplvc.o \
       cres.o cmtx.o cdgl.o regrhs.o pde.o bdf2.o bsolve.o
-SRC = $(OBJ:.o=.f) $(SYSOBJ:.o=.f)
+SRC = $(OBJ:.o=.f)
 
-go: $(OBJ) $(SYSOBJ)
-	$(FC) $(FFLAGS) $(LDFLAGS) -o go $(OBJ) $(SYSOBJ) $(LIB)
+go: $(OBJ)
+	$(FC) $(FFLAGS) $(LDFLAGS) -o go $(OBJ) $(LIB)
 
 $(OBJ): parameters.h
 
