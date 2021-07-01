@@ -5,5 +5,3 @@
 FC = g77
 FFLAGS = -O2 -malign-double -I.
 LIB =
-
-SYSOBJ =

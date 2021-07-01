@@ -9,10 +9,10 @@ OBJ = main.o enorm.o scheck.o wrlog.o wrhead.o wrsoln.o init.o rdhead.o \
       sctvec.o sctmtx.o sctdgl.o locpp.o lapl.o laplvc.o ares.o amtx.o \
       regres.o regmtx.o regrhs.o pde.o 5spot.o bdf2.o bsolve.o sbsolve.o \
       meshlib.o
-SRC = $(OBJ:.o=.f) $(SYSOBJ:.o=.f)
+SRC = $(OBJ:.o=.f)
 
-go: $(OBJ) $(SYSOBJ)
-	$(FC) $(FFLAGS) $(LDFLAGS) -o go $(OBJ) $(SYSOBJ) $(LIB)
+go: $(OBJ)
+	$(FC) $(FFLAGS) $(LDFLAGS) -o go $(OBJ) $(LIB)
 
 $(OBJ): parameters.h
 

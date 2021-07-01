@@ -5,5 +5,3 @@
 FC = f77
 FFLAGS = -O -N114 -I.
 LIB = -lU77
-
-SYSOBJ = second_etime_.o

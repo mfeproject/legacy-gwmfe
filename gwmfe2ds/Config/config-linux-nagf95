@@ -5,5 +5,3 @@
 FC = f95
 FFLAGS = -O3 -dusty -w -I.
 LIB =
-
-SYSOBJ = second_nag.o

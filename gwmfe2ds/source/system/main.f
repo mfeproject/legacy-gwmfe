@@ -96,7 +96,7 @@
 
 *     Update the variables in MFE070.
       call gstat(stats,hlast)
-      call second(cpusec)
+      call cpu_time(cpusec)
 
       if(istate .eq. 2) then
 *       Integrated to TOUT.
