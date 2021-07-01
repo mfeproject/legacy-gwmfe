@@ -1,7 +1,0 @@
-##
-## NAGWare f90 version 2.2
-##
-
-FC = f90
-FFLAGS = -O -dusty -w -ccarg "-m486 -malign-double" -I.
-LIB =

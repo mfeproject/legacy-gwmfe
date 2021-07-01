@@ -1,7 +1,0 @@
-##
-## GNU Fortran compiler g77 (version 5.2.21)
-##
-
-FC = g77
-FFLAGS = -O2 -m486 -malign-double -I.
-LIB =

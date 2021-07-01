@@ -1,7 +1,0 @@
-##
-## GNU Fortran
-##
-
-FC = gfortran
-FFLAGS = -O -I. -w -std=legacy
-LIB =

@@ -1,7 +1,0 @@
-##
-## Absoft beta Fortran 77 compiler (4.4)
-##
-
-FC = f77
-FFLAGS = -O -N114 -I.
-LIB = -lU77

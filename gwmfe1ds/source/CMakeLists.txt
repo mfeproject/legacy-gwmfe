@@ -1,0 +1,25 @@
+target_sources(${EXE} PRIVATE
+  common/bdf2.f
+  common/bsolve.f
+  system/cdgl.f
+  system/cmtx.f
+  system/cres.f
+  system/eltfy.f
+  system/eltpp.f
+  system/eltvec.f
+  system/enorm.f
+  system/init.f
+  system/ivals.f
+  system/jac.f
+  system/lapl.f
+  system/laplvc.f
+  system/linsol.f
+  system/main.f
+  system/rdvars.f
+  system/regrhs.f
+  system/res.f
+  system/scheck.f
+  system/wrgrf.f
+  system/wrlog.f
+  system/ydot.f
+)

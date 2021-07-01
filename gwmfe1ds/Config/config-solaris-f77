@@ -1,9 +1,0 @@
-##
-## Solaris Sunsoft f77
-##
-
-FC = f77
-# Note: the compiler may generate bad code with -fast
-# If you encounter problems, try replacing -fast with -O
-FFLAGS = -u -fnonstd -fast -Bstatic
-LIB =

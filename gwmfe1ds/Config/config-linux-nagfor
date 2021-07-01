@@ -1,7 +1,0 @@
-##
-## NAGWare f90 version 5.2
-##
-
-FC = nagfor
-FFLAGS = -O -dusty -w -I.
-LIB =

@@ -1,0 +1,5 @@
+set(EXE "navier-stokes")
+add_executable(${EXE} pde.f)
+add_subdirectory(source)
+target_include_directories(${EXE} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+install(TARGETS ${EXE})
